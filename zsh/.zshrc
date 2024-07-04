@@ -8,6 +8,7 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
+    ripgrep
     )
 
 # Set up fzf key bindings and fuzzy completion
