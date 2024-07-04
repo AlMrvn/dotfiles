@@ -10,4 +10,8 @@ plugins=(
     zsh-syntax-highlighting
     )
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# source the oh-my-zsh
 source $ZSH/oh-my-zsh.sh
