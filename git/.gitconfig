@@ -1,0 +1,37 @@
+[user]
+	name = Alexis Morvan
+	email = morvan.alexis@gmail.com
+[github]
+	user = AlMrvn
+[credential]
+	helper = cache
+[color]
+	ui = true
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
+[alias]
+	st = status
+	cm = commit -m
+	cob = "!f() { git checkout -b \"u/amorvan/$1\"; }; f"
+	com = checkout master
+	aa = add --all
+
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# View the current working tree status using the short format
+	s = status -s
+
+	# Show the diff between the latest commit and the current state
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+	# Switch to a branch, creating it if necessary
+	go = "!f() { git checkout -b \"u/amorvan/$1\" 2> /dev/null || git checkout \"u/amorvan/$1\"; }; f"
+
+	# Command from bard to set the upstream git source
+        up = "!f() { branch=$(git branch --show-current); if git rev-parse --quiet --verify \"origin/$branch\" >/dev/null 2>&1; then echo \"Upstream already set for $branch\"; else git push --set-upstream origin \"$branch\"; fi; }; f"
