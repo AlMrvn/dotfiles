@@ -25,3 +25,30 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
+
+## fzf and ripgrep
+install [fzf](https://github.com/junegunn/fzf):
+```
+brew install fzf
+```
+With the integration in zsh (see the .zshrc and look for the fzf section", this allow to use amazing command like CTRL-T to search quickly through files.
+
+install [ripgrep](https://github.com/BurntSushi/ripgrep):
+```
+brew install ripgrep
+```
+
+## Install tmux
+```
+brew install tmux
+```
+
+and the plugin manager:
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+## Install Neovim
+```
+brew install neovim
+```
