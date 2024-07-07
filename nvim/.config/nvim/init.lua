@@ -127,6 +127,15 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- [[ Detect specifics filetype like stil and dem files ]]
+-- see https://github.com/quantumlib/Stim for these files
+vim.filetype.add({
+	extension = {
+		stim = "stim",
+		dem = "dem",
+	},
+})
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -794,12 +803,44 @@ require("lazy").setup({
 				---@type PaintHighlight[]
 				highlights = {
 					{
-						-- filter can be a table of buffer options that should match,
-						-- or a function called with buf as param that should return true.
-						-- The example below will paint @something in comments with Constant
 						filter = { filetype = "stim" },
 						pattern = "TICK",
 						hl = "Constant",
+					},
+					{
+						filter = { filetype = "stim" },
+						pattern = "(.*_COORDS.*)$",
+						hl = "Conditional",
+					},
+					{
+						filter = { filetype = "stim" },
+						pattern = "(DETECTOR.*)",
+						hl = "Tag",
+					},
+					{
+						filter = { filetype = "stim" },
+						pattern = "([MR] .*)$",
+						hl = "Number",
+					},
+					{
+						filter = { filetype = "stim" },
+						pattern = "([M].*)$",
+						hl = "Number",
+					},
+					{
+						filter = { filetype = "stim" },
+						pattern = "(DEPOLARIZE.*)",
+						hl = "Comment",
+					},
+					{
+						filter = { filetype = "stim" },
+						pattern = "(.*_ERROR.*)",
+						hl = "Comment",
+					},
+					{
+						filter = { filetype = "stim" },
+						pattern = "(OBSERVABLE_INCLUDE.*)",
+						hl = "String",
 					},
 				},
 			})
