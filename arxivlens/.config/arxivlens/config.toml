@@ -1,0 +1,5 @@
+[query]
+category = "quant-ph"
+[highlight]
+keywords = ["error", "correction", "QEC", "superconducting"]
+authors = ["Devoret", "Oliver", "Schuster"]
