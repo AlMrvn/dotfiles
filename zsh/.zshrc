@@ -1,26 +1,8 @@
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# zsh Options
+setopt HIST_IGNORE_ALL_DUPS
 
-# Path for the $XDG_CONFIG_HOME for mac and linux to be the same
-if [[ -z "$XDG_CONFIG_HOME" ]]
-then
-        export XDG_CONFIG_HOME="$HOME/.config/"
-fi
+# Custom zsh
+[ -f "$HOME/.config/zsh/custom.zsh" ] && source "$HOME/.config/zsh/custom.zsh"
 
-
-
-ZSH_THEME="robbyrussell"
-
-# plugins to install with zsh
-plugins=(
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    ripgrep
-    )
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-# source the oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# Aliases
+[ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
