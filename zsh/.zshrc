@@ -6,3 +6,5 @@ setopt HIST_IGNORE_ALL_DUPS
 
 # Aliases
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
+
+. "$HOME/.local/bin/env"

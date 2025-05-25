@@ -2,5 +2,14 @@
 category = "quant-ph"
 
 [highlight]
-keywords = ["error", "correction", "QEC", "superconducting"]
-authors = ["Devoret", "Oliver", "Schuster", "Wallraff", "Lukin", "Gidney", "Siddiqi", "Girvin", "Schoelkopf"]
+keywords = [
+    "error",
+    "correction",
+    "QEC",
+    "superconducting",
+]
+authors = [
+    "Morvan",
+    "Kamata",
+    "Lutz",
+]
