@@ -6,10 +6,10 @@ This is my personal Neovim configuration, built with a focus on modularity and m
 
 - **Plugin Management**: Using `lazy.nvim` for efficient plugin loading
 - **LSP Support**: Full Language Server Protocol support with Mason
-- **Fuzzy Finding**: Using `fzf-lua` for fast file and content searching
-- **Git Integration**: Git signs and commands
-- **Modern UI**: Clean and efficient interface with custom statusline
-- **Python Support**: Full Python development support with BasedPyright and Ruff
+- **Modern UI**: Clean and efficient interface with Tokyo Night theme
+- **Smart Navigation**: Flash navigation and enhanced text objects
+- **File Management**: Dual file explorers (Oil.nvim and Neo-tree)
+- **Code Quality**: Built-in formatting and linting support
 
 ## 📋 Keymaps
 
@@ -20,20 +20,18 @@ The leader key is set to `<Space>`. All leader-based commands start with this ke
 
 | Keymap | Description | Mode |
 |--------|-------------|------|
-| `<leader>ff` | Find files | Normal |
-| `<leader>fg` | Find git files | Normal |
-| `<leader>fb` | Find buffers | Normal |
-| `<leader>fe` | Toggle file explorer | Normal |
+| `<leader>f` | Format buffer | Normal |
+| `<leader>e` | Toggle file explorer (Oil) | Normal |
+| `<leader>n` | Toggle file tree (Neo-tree) | Normal |
 
 ### Search and Navigation
 
 | Keymap | Description | Mode |
 |--------|-------------|------|
-| `<leader>fw` | Find word in files | Normal |
-| `<leader>fh` | Find help tags | Normal |
-| `<leader>fm` | Find marks | Normal |
-| `<leader>gc` | Git commits | Normal |
-| `<leader>gb` | Git branches | Normal |
+| `s` | Flash navigation | Normal |
+| `S` | Flash treesitter | Normal |
+| `r` | Flash remote | Normal |
+| `R` | Flash treesitter search | Normal |
 
 ### LSP Keymaps
 
@@ -49,20 +47,15 @@ The leader key is set to `<Space>`. All leader-based commands start with this ke
 | `<leader>rn` | Rename symbol | Normal |
 | `<leader>ca` | Code actions | Normal |
 | `K` | Hover documentation | Normal |
-| `<leader>th` | Toggle inlay hints | Normal |
 
-### Terminal
-
-| Keymap | Description | Mode |
-|--------|-------------|------|
-| `<C-\>` | Toggle terminal | Normal |
-| `<C-\>` | Toggle terminal | Terminal |
-
-### Formatting
+### Text Objects and Surround
 
 | Keymap | Description | Mode |
 |--------|-------------|------|
-| `<leader>f` | Format buffer | Normal |
+| `sa` | Add surrounding | Normal |
+| `sd` | Delete surrounding | Normal |
+| `sr` | Replace surrounding | Normal |
+| `sn` | Update surrounding | Normal |
 
 ## 🛠️ Plugin Configuration
 
@@ -77,28 +70,25 @@ The leader key is set to `<Space>`. All leader-based commands start with this ke
 - `mason.nvim`: LSP installer
 - `nvim-cmp`: Completion engine
 - `LuaSnip`: Snippet engine
+- `fidget.nvim`: LSP status indicator
 
 ### UI and Colors
 - `tokyonight.nvim`: Colorscheme
 - `todo-comments.nvim`: Todo comments
 - `mini.statusline`: Status line
+- `paint.nvim`: Custom syntax highlighting
 
 ### File Management
 - `oil.nvim`: File explorer
 - `neo-tree.nvim`: File tree
 
-### Python Development
-- **LSP**: BasedPyright for Python language server
-- **Formatting & Linting**: 
-  - Ruff (fast Python linter and formatter)
-  - Auto-formatting on save
-  - 88 character line length
-  - Import sorting
-  - Code style enforcement
-- **Features**:
-  - Type checking
-  - Inlay hints for types
-  - Intelligent code completion
+### Navigation and Text Objects
+- `flash.nvim`: Enhanced navigation
+- `mini.ai`: Text objects
+- `mini.surround`: Surround text
+
+### Treesitter
+- `nvim-treesitter`: Syntax highlighting and parsing
 
 ## 📁 Directory Structure
 
@@ -117,8 +107,6 @@ nvim/
 - Neovim >= 0.11.0
 - Git
 - A Nerd Font (for icons)
-- Python 3.8+ (for development)
-- Ruff (installed automatically by Mason)
 
 ## 🚀 Installation
 
@@ -130,11 +118,6 @@ git clone <your-repo-url> ~/.config/nvim
 2. Start Neovim and let it install plugins:
 ```bash
 nvim
-```
-
-3. Wait for Mason to install Python tools:
-```vim
-:Mason
 ```
 
 ## 🔄 Updates
@@ -150,8 +133,8 @@ To update plugins:
 - Each plugin has its own configuration file
 - LSP features are automatically configured for supported languages
 - Formatting is handled by `conform.nvim`
-- Python files are automatically formatted on save using Ruff
-- BasedPyright provides type checking and intelligent code completion
+- Flash navigation provides quick movement within files
+- Dual file explorers (Oil.nvim and Neo-tree) for different use cases
 
 ## 🤝 Contributing
 
