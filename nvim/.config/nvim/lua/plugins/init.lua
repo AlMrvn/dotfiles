@@ -23,6 +23,7 @@ require("lazy").setup({
     -- Quality of life plugins including picker functionality
     {
         "folke/snacks.nvim",
+        priority = 1000,
         dependencies = {
             "nvim-tree/nvim-web-devicons", -- Icons
             "nvim-lua/plenary.nvim",       -- Required for various functions

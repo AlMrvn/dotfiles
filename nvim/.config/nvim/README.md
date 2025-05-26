@@ -16,22 +16,35 @@ This is my personal Neovim configuration, built with a focus on modularity and m
 ### Leader Key
 The leader key is set to `<Space>`. All leader-based commands start with this key.
 
-### File Operations
+### Keymap Organization
+All keymaps follow a consistent pattern using the [Action] [Target] format:
 
-| Keymap | Description | Mode |
-|--------|-------------|------|
-| `<leader>f` | Format buffer | Normal |
-| `<leader>e` | Toggle file explorer (Oil) | Normal |
-| `<leader>n` | Toggle file tree (Neo-tree) | Normal |
+1. **Find Commands** (`<leader>f`): [F]ind [X]
+   - `ff` - [F]ind [F]iles
+   - `fe` - [F]ind [E]xplorer
+   - `fb` - [F]ind [B]uffers
+   - `fw` - [F]ind [W]ord
+   - `fh` - [F]ind [H]elp
+   - `fm` - [F]ind [M]arks
+   - `fd` - [F]ind [D]ebug Info
+   - `ft` - [F]ind [T]race
 
-### Search and Navigation
+2. **Git Commands** (`<leader>g`): [G]it [X]
+   - `gf` - [G]it [F]iles
+   - `gc` - [G]it [C]ommits
+   - `gb` - [G]it [B]ranches
+   - `gl` - [G]it [L]ine Blame
 
-| Keymap | Description | Mode |
-|--------|-------------|------|
-| `s` | Flash navigation | Normal |
-| `S` | Flash treesitter | Normal |
-| `r` | Flash remote | Normal |
-| `R` | Flash treesitter search | Normal |
+3. **Use Commands** (`<leader>u`): [U]se [X]
+   - `us` - [U]se [S]pell
+   - `uw` - [U]se [W]rap
+   - `ul` - [U]se [L]ine Numbers
+   - `ud` - [U]se [D]iagnostics
+   - `uh` - [U]se [H]ints
+   - `un` - [U]se [N]otifications
+
+4. **Notification Commands** (`<leader>n`): [N]otification [X]
+   - `nh` - [N]otification [H]istory
 
 ### LSP Keymaps
 
