@@ -29,6 +29,7 @@ require("lazy").setup({
         },
         config = function()
             require("plugins.configs.snacks")
+            require("plugins.configs.dashboard")  -- Load dashboard config right after Snacks
         end,
     },
     
@@ -113,6 +114,4 @@ require("plugins.configs.treesitter")   -- Treesitter configuration
 require("plugins.configs.paint")        -- Custom highlighting configuration
 require("plugins.configs.oil")          -- File explorer configuration
 require("plugins.configs.neo-tree")     -- File tree configuration
-require("plugins.configs.flash")        -- Flash navigation configuration
-require("plugins.configs.snacks")       -- Snacks.nvim configuration
-require("plugins.configs.dashboard")    -- Dashboard configuration 
+require("plugins.configs.flash")        -- Flash navigation configuration 
