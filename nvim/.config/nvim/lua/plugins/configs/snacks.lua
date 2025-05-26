@@ -8,6 +8,10 @@ Snacks.setup({
     enabled = true,
     prompt_position = "bottom",  -- Place the input prompt at the bottom
   },
+  explorer = {
+    enabled = true,
+    show_hidden = true,
+  },
   -- Enable terminal
   terminal = {
     enabled = true,

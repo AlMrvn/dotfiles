@@ -81,8 +81,7 @@ require("lazy").setup({
     -- [[ File Management ]]
     -- File system navigation and management
     { "stevearc/oil.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } }, -- File explorer
-    { "nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", "3rd/image.nvim" } }, -- File tree
-    
+  
     -- [[ Navigation and Search ]]
     -- Enhanced navigation features
     { "folke/flash.nvim", event = "VeryLazy" }, -- Flash navigation
@@ -112,5 +111,4 @@ require("plugins.configs.mini")         -- Mini plugins configuration
 require("plugins.configs.treesitter")   -- Treesitter configuration
 require("plugins.configs.paint")        -- Custom highlighting configuration
 require("plugins.configs.oil")          -- File explorer configuration
-require("plugins.configs.neo-tree")     -- File tree configuration
 require("plugins.configs.flash")        -- Flash navigation configuration 
