@@ -1,34 +1,6 @@
 -- Snacks.nvim configuration
 local Snacks = require("snacks")
 
--- Initialize random seed
-math.randomseed(os.time())
-
--- Function to get a random keymap tip
-local function get_random_keymap_tip()
-    local keymaps = {
-        { key = "<leader>ff", desc = "Find Files" },
-        { key = "<leader>fg", desc = "Find Git Files" },
-        { key = "<leader>fb", desc = "List All Buffers" },
-        { key = "<leader>fw", desc = "Find Word" },
-        { key = "<leader>fh", desc = "Find Help Tags" },
-        { key = "<leader>fm", desc = "Find Marks" },
-        { key = "<leader>gc", desc = "Git Commits" },
-        { key = "<leader>gb", desc = "Git Branches" },
-        { key = "<C-/>", desc = "Toggle Terminal" },
-        { key = "<leader>us", desc = "Toggle Spelling" },
-        { key = "<leader>uw", desc = "Toggle Word Wrap" },
-        { key = "<leader>ul", desc = "Toggle Line Numbers" },
-        { key = "<leader>ud", desc = "Toggle Diagnostics" },
-        { key = "<leader>uh", desc = "Toggle Inlay Hints" },
-    }
-    -- Generate a random index between 1 and the number of keymaps
-    local random_index = math.random(1, #keymaps)
-    local tip = keymaps[random_index]
-    -- Add some visual separation and make the tip more noticeable
-    return string.format("💡 Tip: %s - %s", tip.key, tip.desc)
-end
-
 -- Configure Snacks
 Snacks.setup({
   -- Enable picker functionality
@@ -49,6 +21,25 @@ Snacks.setup({
   -- Enable toggle features
   toggle = {
     enabled = true,
+  },
+  dashboard = {
+    enabled = true,
+    sections = {
+        { section = "header" },
+        { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+        { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+        { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+        { section = "startup" },
+    },
+    preset = {
+        header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+    }
   },
 })
 

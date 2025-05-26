@@ -29,7 +29,6 @@ require("lazy").setup({
         },
         config = function()
             require("plugins.configs.snacks")
-            require("plugins.configs.dashboard")  -- Load dashboard config right after Snacks
         end,
     },
     
