@@ -54,6 +54,7 @@ vim.keymap.set("n", "<leader>ff", function()
         no_ignore = true,  -- Don't ignore files specified in .gitignore
     })
 end, { desc = "Find Files" })
+vim.keymap.set("n", "<leader>fe", function() Snacks.picker.explorer() end, { desc = "[F]ile [E]xplorer"})
 vim.keymap.set("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
 -- List all open buffers
 vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "List All Buffers" })
