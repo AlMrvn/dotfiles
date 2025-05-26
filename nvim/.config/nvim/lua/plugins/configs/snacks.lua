@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Use commands (all start with <leader>u)
-vim.keymap.set("n", "<leader>us", function() Snacks.toggle.option("spell") end, { desc = "[U]se [S]pell" })
+vim.keymap.set("n", "<leader>us", function() Snacks.toggle.option("spell") end, { desc = "[U]se [S]pelling" })
 vim.keymap.set("n", "<leader>uw", function() Snacks.toggle.option("wrap") end, { desc = "[U]se [W]rap" })
 vim.keymap.set("n", "<leader>ul", function() Snacks.toggle.line_number() end, { desc = "[U]se [L]ine Numbers" })
 vim.keymap.set("n", "<leader>ud", function() Snacks.toggle.diagnostics() end, { desc = "[U]se [D]iagnostics" })
