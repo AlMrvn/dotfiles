@@ -10,6 +10,42 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Safe require function for better error handling
+local function safe_require(module)
+    local status, result = pcall(require, module)
+    if not status then
+        vim.notify("Failed to load " .. module, vim.log.levels.ERROR)
+        return nil
+    end
+    return result
+end
+
+-- Group plugin configurations by category
+local plugin_configs = {
+    core = {
+        "plugins.configs.snacks",      -- Snacks configuration
+        "plugins.configs.conform",     -- Formatting configuration
+    },
+    lsp = {
+        "plugins.configs.lsp",         -- LSP configuration
+        "plugins.configs.cmp",         -- Completion configuration
+    },
+    ui = {
+        "plugins.configs.tokyonight",  -- Colorscheme configuration
+        "plugins.configs.paint",       -- Custom highlighting configuration
+    },
+    navigation = {
+        "plugins.configs.oil",         -- File explorer configuration
+        "plugins.configs.flash",       -- Flash navigation configuration
+    },
+    mini = {
+        "plugins.configs.mini",        -- Mini plugins configuration
+    },
+    treesitter = {
+        "plugins.configs.treesitter",  -- Treesitter configuration
+    },
+}
+
 -- Configure lazy.nvim and define all plugins
 require("lazy").setup({
     -- [[ Core Plugins ]]
@@ -29,7 +65,7 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",       -- Required for various functions
         },
         config = function()
-            require("plugins.configs.snacks")
+            safe_require("plugins.configs.snacks")
         end,
     },
     
@@ -103,13 +139,10 @@ require("lazy").setup({
 })
 
 -- [[ Load Plugin Configurations ]]
--- Load individual plugin configurations after plugins are installed
-require("plugins.configs.lsp")          -- LSP configuration
-require("plugins.configs.conform")      -- Formatting configuration
-require("plugins.configs.cmp")          -- Completion configuration
-require("plugins.configs.tokyonight")   -- Colorscheme configuration
-require("plugins.configs.mini")         -- Mini plugins configuration
-require("plugins.configs.treesitter")   -- Treesitter configuration
-require("plugins.configs.paint")        -- Custom highlighting configuration
-require("plugins.configs.oil")          -- File explorer configuration
-require("plugins.configs.flash")        -- Flash navigation configuration 
+-- Load configurations by category
+for category, configs in pairs(plugin_configs) do
+    vim.notify("Loading " .. category .. " configurations...", vim.log.levels.INFO)
+    for _, config in ipairs(configs) do
+        safe_require(config)
+    end
+end 
