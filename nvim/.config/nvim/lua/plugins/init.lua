@@ -26,10 +26,7 @@ local plugin_configs = {
         "plugins.configs.snacks",      -- Snacks configuration
         "plugins.configs.conform",     -- Formatting configuration
     },
-    lsp = {
-        "plugins.configs.lsp",         -- LSP configuration
-        "plugins.configs.cmp",         -- Completion configuration
-    },
+
     ui = {
         "plugins.configs.tokyonight",  -- Colorscheme configuration
         "plugins.configs.paint",       -- Custom highlighting configuration
@@ -74,23 +71,61 @@ require("lazy").setup({
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "williamboman/mason.nvim",           -- LSP installer
-            "williamboman/mason-lspconfig.nvim", -- Bridge between mason and lspconfig
-            "WhoIsSethDaniel/mason-tool-installer.nvim", -- Tool installer
-            "hrsh7th/cmp-nvim-lsp",             -- LSP completion source
-            "j-hui/fidget.nvim",                -- LSP status indicator
-            "folke/neodev.nvim",                -- Neovim development tools
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
+            "saghen/blink.cmp",
         },
     },
     {
-        "hrsh7th/nvim-cmp",                     -- Completion engine
+        "williamboman/mason.nvim",
+        cmd = "Mason",
+        keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+        opts = {
+            ensure_installed = {
+                "stylua",
+                "ruff",
+                "basedpyright",
+            },
+        },
+        config = function(_, opts)
+            require("mason").setup(opts)
+            local mr = require("mason-registry")
+            for _, tool in ipairs(opts.ensure_installed) do
+                local p = mr.get_package(tool)
+                if not p:is_installed() then
+                    p:install()
+                end
+            end
+        end,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+            automatic_installation = true,
+        },
+    },
+    {
+        "saghen/blink.cmp",
+        version = "1.*",
         event = "InsertEnter",
         dependencies = {
-            "L3MON4D3/LuaSnip",                 -- Snippet engine
-            "saadparwaiz1/cmp_luasnip",         -- Snippet completion
-            "hrsh7th/cmp-nvim-lsp",             -- LSP completion
-            "hrsh7th/cmp-path",                 -- Path completion
+            "rafamadriz/friendly-snippets",
         },
+        opts = {
+            keymap = { preset = "default" },
+            appearance = {
+                nerd_font_variant = "mono"
+            },
+            completion = {
+                documentation = { auto_show = false }
+            },
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+            },
+            fuzzy = { implementation = "lua" }
+        },
+        opts_extend = { "sources.default" }
     },
     
     -- [[ Formatting ]]
